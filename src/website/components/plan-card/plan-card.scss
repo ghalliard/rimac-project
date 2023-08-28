@@ -1,6 +1,7 @@
 @import '../../styles//mixins.scss';
 
 .plan-card{
+    box-shadow: 0px 1px 32px 0px rgba(174, 172, 243, 0.35);
     background-color: white;
     border-radius: 24px;
     & > span:nth-child(2){

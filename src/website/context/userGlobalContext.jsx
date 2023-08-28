@@ -5,11 +5,15 @@ import { useState } from 'react';
 export const UserContext = createContext();
 
 const UserGlobalContext = ({children}) =>{
-    const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [user, setUser] = useState(null);
+    const [form, setForm] = useState({
+        documentType: 'DNI',
+        document: '',
+        cellphone: '',
+    });
 
     return (
-        <UserContext.Provider value={{data, setData, loading, setLoading}}>
+        <UserContext.Provider value={{user, setUser, form, setForm}}>
             {children}
         </UserContext.Provider>
     )

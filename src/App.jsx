@@ -1,11 +1,17 @@
 import UserGlobalContext from './website/context/userGlobalContext';
+import PlanGlobalContext from './website/context/PlanGlobalContext';
+import AppGlobalContext from './website/context/AppGlobalContext';
 import Rutas from "./website/route/rutas";
 
 const App = () => {
   return (
-    <UserGlobalContext>
-        <Rutas />
-    </UserGlobalContext>
+    <AppGlobalContext>
+      <PlanGlobalContext>
+        <UserGlobalContext>
+          <Rutas />
+        </UserGlobalContext>
+      </PlanGlobalContext>
+    </AppGlobalContext>
   )
 }
 

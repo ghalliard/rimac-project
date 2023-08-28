@@ -11,7 +11,7 @@ const Carousel = () => {
       const width = document.querySelector('.carousel-container').clientWidth;
       
       document.querySelectorAll('.carousel-item').forEach(element =>{
-        element.style.transform = `translateX(-${width*page}px)`;
+        element.style.transform = `translateX(-${(width*page) - 16*page}px)`;
       });
     }
     handleTransition();

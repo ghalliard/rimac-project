@@ -7,7 +7,7 @@ import Home from '../pages/home';
 import { UserContext } from '../context/userGlobalContext';
 
 const Rutas = () => {
-    const { data } = useContext(UserContext);
+    const { user } = useContext(UserContext);
 
     return (
         <BrowserRouter>
@@ -15,7 +15,7 @@ const Rutas = () => {
                 <Route path='/' element={<Layout/>}>
                     <Route index element={<Navigate to={'/login'} />} />
                     <Route path='/login' element={<Login/>} />
-                    <Route path='/home' element={data === null ? <Navigate to={'/login'} /> : <Home/> } />
+                    <Route path='/home' element={user === null ? <Navigate to={'/login'} /> : <Home/> } />
                     <Route path='*' element={<NotFound/>}/>
                 </Route> 
             </Routes>

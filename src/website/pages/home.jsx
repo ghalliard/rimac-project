@@ -7,8 +7,8 @@ import Carousel from '../components/carousel/carousel/Carousel';
 
 const Home = () =>{
     const [planFor, setPlanFor] = useState(null);
+    const { user } = useContext(UserContext);
 
-    const { data } = useContext(UserContext);
     const cards = [
         {
             title: 'Para mí',
@@ -22,7 +22,7 @@ const Home = () =>{
 
     return (
         <main className='main-home'>
-            <h1 className='main-home_title'>{data.name} ¿Para quién deseas cotizar?</h1>
+            <h1 className='main-home_title'>{user.name} ¿Para quién deseas cotizar?</h1>
             <p className='main-home_subtitle'>Selecciona la opción que se ajuste más a tus necesidades.</p>
 
             <RadioGroup 

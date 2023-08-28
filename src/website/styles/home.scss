@@ -1,6 +1,9 @@
 @import './mixins.scss';
 
 .main-home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     overflow: hidden;
     background-color: $background-color;
     padding: 32px 24px 132px 24px;
@@ -14,7 +17,6 @@
     &_plan-card-container{
         display: flex;
         flex-direction: column;
-        gap: 24px;
         margin-top: 32px;
     }
 }

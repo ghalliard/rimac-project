@@ -1,11 +1,8 @@
-import { useState } from 'react';
+import { useContext } from 'react';
+import { UserContext } from '../context/userGlobalContext';
 
 const useForm = () =>{
-    const [form, setForm] = useState({
-        documentType: 'DNI',
-        document: '',
-        cellphone: '',
-    });
+    const {form, setForm} = useContext(UserContext);
     const handleChange = (e) => {
         const {name, value} = e.target;
 

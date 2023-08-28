@@ -1,0 +1,23 @@
+.carousel-paginator{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 68px;
+    & > button > svg > g{
+        & > circle{
+            stroke: #4F4FFF;
+        }
+        & > path{
+            fill: #4F4FFF;
+        }
+    }
+    & > button:disabled > svg > g{
+        & > circle{
+            stroke: #A9AFD9
+        }
+        & > path{
+            fill: #A9AFD9;
+        }
+    }
+}

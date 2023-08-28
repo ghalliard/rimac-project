@@ -1,9 +1,23 @@
 import { Radio } from '@nextui-org/react';
 import './plan-card.scss';
+import { useContext } from 'react';
+import { PlanContext } from '../../context/PlanGlobalContext';
+import useFetch from '../../hooks/useFetch';
+
 
 const PlanCard = ({data}) =>{
+    const { plans } = useContext(PlanContext);
+    const { fetchData } = useFetch('https://rimac-front-end-challenge.netlify.app/api/plans.json');
+
+    const handlePlans = () =>{
+        if(plans.lenght === 0){
+            fetchData();
+        } 
+    }
+
     return (    
         <Radio 
+            onClick={handlePlans}
             value={data.key}
             size='lg'
             classNames={{
