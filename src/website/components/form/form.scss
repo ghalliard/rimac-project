@@ -1,0 +1,54 @@
+@import '../../styles/mixins.scss';
+
+.second-section_form{
+    &_auth{
+        display: flex;
+        button{
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border: 1px solid $grey-var-1;
+            & > div{
+                padding-top: 0;
+            }
+        }
+        & > div:first-child{
+            width: 140px;
+        }
+        & > div:nth-child(2) > div{
+            border-top: 1px solid $grey-var-1;
+            border-bottom: 1px solid $grey-var-1;
+            border-right: 1px solid $grey-var-1;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+    }
+    & > div:nth-child(2) > div{
+        border: 1px solid $grey-var-1;
+    }
+    &_checkbox{
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 24px;
+        & > label > span:nth-child(2){
+            &::after{
+                background-color: $dark-color !important;
+            }
+            & > svg > polyline{
+                stroke: white;
+            }
+        }
+        & > a{
+            @include paragraph(black, 12px, 500, 0.1px);
+            text-decoration: underline;
+        }
+    }
+    &_button{
+        width: 100%;
+        border-radius: 40px;
+        margin-top: 24px;
+        @include paragraph(white, 18px, bold, .4px);
+        background-color: $dark-color;
+        padding: 18px 0;
+    }
+}

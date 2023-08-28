@@ -1,0 +1,16 @@
+@import './mixins.scss';
+
+.main-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    &_telephone{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        span{
+            @include paragraph(black, 16px, bold, 0.4px);
+        }
+    }
+}

@@ -1,0 +1,52 @@
+@import '../../../styles/mixins.scss';
+
+.carousel-item{
+    flex: 0 0 auto;
+    width: 100%;
+    background-color: white;
+    border-radius: 24px;
+    padding: 40px 32px 48px 32px;
+    box-shadow: 0px 1px 32px 0px rgba(174, 172, 243, 0.35);
+    transition: 0.2s;
+    &_title{
+        margin-bottom: 24px;
+        & > div{
+            display: flex;
+            justify-content: space-between;
+            h1{
+                @include paragraph(black, 24px, bold, -0.2px);
+            }
+        }
+        & > p{
+            @include paragraph(black, 20px, bold, -0.2px);
+            span{
+                @include paragraph($grey-var-3, 12px, bold, 0.6px);
+            }
+        }
+    }
+    &_description{
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        padding-top: 24px;
+        border-top: 1px solid rgba(215, 219, 245, 1);
+        margin-bottom: 40px;
+        li{
+            display: flex;
+            gap: 8px;
+            svg{
+                flex-shrink: 0;
+            }
+        }
+        p{
+            @include paragraph(black, 16px, normal, .1px);
+        }
+    }
+    &_button{
+        background-color: $brand-color;
+        width: 100%;
+        padding: 14px 0;
+        @include paragraph(white, 18px, bold, 0.4px);
+        border-radius: 32px;
+    }
+}

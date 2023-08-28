@@ -1,0 +1,20 @@
+@import './mixins.scss';
+
+.main-home{
+    overflow: hidden;
+    background-color: $background-color;
+    padding: 32px 24px 132px 24px;
+    &_title{
+        @include paragraph(black, 28px, 700, -0.2px);
+        margin-bottom: 8px;
+    }
+    &_subtitle{
+        @include paragraph(black, 16px, normal, 0.1px);
+    }
+    &_plan-card-container{
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        margin-top: 32px;
+    }
+}

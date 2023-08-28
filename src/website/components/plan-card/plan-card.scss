@@ -1,0 +1,21 @@
+@import '../../styles//mixins.scss';
+
+.plan-card{
+    background-color: white;
+    border-radius: 24px;
+    & > span:nth-child(2){
+        align-self: end;
+    }
+    &_title{
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 8px;
+        h1{
+            @include paragraph(black, 20px, bold, -0.2px);
+        }
+    }
+    &_description{
+        @include paragraph(black, 12px, normal, 0.2px);
+    }
+}

@@ -1,0 +1,15 @@
+@mixin paragraph($color, $size, $weight, $spacing){
+    color: $color;
+    font-size: $size;
+    letter-spacing: $spacing;
+    font-weight: $weight;
+}
+
+$brand-color: rgba(255, 28, 68, 1);
+$grey: rgba(204, 209, 238, 1);
+$grey-var-1: rgba(94, 100, 136, 1);
+$grey-var-2: rgba(43, 48, 78, 1);
+$grey-var-3: rgba(121, 129, 178, 1);
+$dark-color: rgba(3, 5, 15, 1);
+$background-color: rgba(250, 251, 255, 1);
+

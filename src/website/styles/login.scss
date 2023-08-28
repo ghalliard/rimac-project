@@ -1,0 +1,33 @@
+@import './mixins.scss';
+
+.main-login{
+    padding: 0 24px 96px 24px;
+    .first-section{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 24px;
+        border-bottom: 1px solid $grey;
+        &_title{
+            @include paragraph(black, 28px, bold, normal);
+            span{
+                border-radius: 4px;
+                padding: 2px 8px;
+                background: linear-gradient(86.01deg, #00F4E2 0%, #00FF7F 100%);
+                @include paragraph(black, 12px, bold, 0.4px);
+            }
+        }
+        &_image-container{
+            img{
+                border-radius: 16px;
+            }
+        }
+    }
+    .second-section{
+        margin-top: 24px;
+        &_subtitle{
+            @include paragraph(black, 14px, 500, 0.2px);
+            margin-bottom: 24px;
+        }
+    }
+}
