@@ -3,11 +3,10 @@ import { UserContext } from '../context/userGlobalContext';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppGlobalContext';
 import { PlanContext } from './../context/PlanGlobalContext';
-import { getAge } from '../utils/getAge';
 
 const useFetch = (url) =>{
     const navigate = useNavigate();
-    const { setUser, user } = useContext(UserContext);
+    const { setUser } = useContext(UserContext);
     const { setLoading } = useContext(AppContext);
     const { setPlans } = useContext(PlanContext);
     
@@ -28,8 +27,7 @@ const useFetch = (url) =>{
                 navigate('/home');
             }
             else{
-                setPlans(data.list.filter(element => getAge(user.birthday) <= element.age));
-                console.log(getAge('02-04-1990'));
+                setPlans(data.list);
             }
         })
         .catch(err => console.log(err))

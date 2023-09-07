@@ -7,9 +7,10 @@ export const PlanContext = createContext();
 const PlanGlobalContext = ({children}) =>{
     const [plans, setPlans] = useState([]); 
     const [selectedPlan, setSelectedPlan] = useState(null);
+    const [showPlans, setShowPlans] = useState(false);
 
     return (
-        <PlanContext.Provider value={{plans, setPlans, selectedPlan, setSelectedPlan}}>
+        <PlanContext.Provider value={{plans, setPlans, selectedPlan, setSelectedPlan, showPlans, setShowPlans}}>
             {children}
         </PlanContext.Provider>
     )

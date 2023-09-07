@@ -1,4 +1,3 @@
-export const getAge = (date) =>{
-    console.log(date);
+export const getAge = (date) =>{    
     return new Date().getFullYear() - new Date(date).getFullYear();
 }

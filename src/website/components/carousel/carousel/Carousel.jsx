@@ -1,10 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import CarouselPaginator from "../CarouselPaginator/CarouselPaginator";
 import CarouItem from "../carouItem/carouItem";
 import './carousel.scss';
+import { PlanContext } from './../../../context/PlanGlobalContext';
+import { getAge } from "../../../utils/getAge";
+import { UserContext } from "../../../context/userGlobalContext";
 
 const Carousel = () => {
   const [page, setPage] = useState(0);
+  const { plans, showPlans } = useContext(PlanContext);
+  const { user } = useContext(UserContext); 
 
   useEffect(() =>{
     const handleTransition = () =>{
@@ -18,11 +23,14 @@ const Carousel = () => {
   }, [page]);
 
   return (
-    <div>
+    <div style={{ 
+      height: showPlans? 'auto' : 0,
+      overflowY: showPlans? 'visible' : 'hidden',
+     }}>
         <div className="carousel-container">
-          <CarouItem/>
-          <CarouItem/>
-          <CarouItem/>
+          {plans.filter(element => getAge(user.birthDay) <= element.age).map((element, index) =>{
+            return <CarouItem key={`carouselItem-${index}`} plan={element}/>
+          })}
         </div>
         <CarouselPaginator page={page} setPage={setPage} />
     </div>
