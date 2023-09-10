@@ -18,3 +18,17 @@
         @include paragraph(white, 12px, normal, .1px);
     }
 }
+@media (min-width: 767px){
+    .main-footer{
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 120px;
+        padding-right: 120px;
+        &_logo-container{
+            margin: 0;
+            padding: 0;
+            border-bottom: none;
+        }
+    }
+}

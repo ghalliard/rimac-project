@@ -26,7 +26,10 @@ const Carousel = () => {
     <div style={{ 
       height: showPlans? 'auto' : 0,
       overflowY: showPlans? 'visible' : 'hidden',
-     }}>
+      marginTop: '24px'
+     }}
+     className="carousel"
+     >
         <div className="carousel-container">
           {plans.filter(element => getAge(user.birthDay) <= element.age).map((element, index) =>{
             return <CarouItem key={`carouselItem-${index}`} plan={element}/>

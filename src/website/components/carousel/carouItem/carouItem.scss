@@ -1,6 +1,8 @@
 @import '../../../styles/mixins.scss';
 
 .carousel-item{
+    display: flex;
+    flex-direction: column;
     flex: 0 0 auto;
     width: 100%;
     background-color: white;
@@ -27,10 +29,10 @@
     &_description{
         display: flex;
         flex-direction: column;
+        flex-grow: 1;
         gap: 24px;
-        padding-top: 24px;
+        padding: 24px 0;
         border-top: 1px solid rgba(215, 219, 245, 1);
-        margin-bottom: 40px;
         li{
             display: flex;
             gap: 8px;
@@ -48,5 +50,11 @@
         padding: 14px 0;
         @include paragraph(white, 18px, bold, 0.4px);
         border-radius: 32px;
+    }
+}
+@media (min-width: 767px) {
+    .carousel-item{
+        width: 100%;
+        max-width: 288px;
     }
 }

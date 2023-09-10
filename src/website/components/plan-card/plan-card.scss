@@ -4,6 +4,10 @@
     box-shadow: 0px 1px 32px 0px rgba(174, 172, 243, 0.35);
     background-color: white;
     border-radius: 24px;
+    width: 100%;
+    align-items: start;
+    margin: 0;
+    max-width: none;
     & > span:nth-child(2){
         align-self: end;
     }
@@ -18,5 +22,14 @@
     }
     &_description{
         @include paragraph(black, 12px, normal, 0.2px);
+    }
+}
+@media (min-width: 770px) {
+    .plan-card{
+        max-width: 256px;
+        &_title{
+            flex-direction: column;
+            align-items: start;
+        }
     }
 }

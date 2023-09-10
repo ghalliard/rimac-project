@@ -5,9 +5,10 @@ export const AppContext = createContext();
 
 const AppGlobalContext = ({children}) =>{
     const [loading, setLoading] = useState([]); 
+    const [ step, setStep ] = useState(0);
 
     return (
-        <AppContext.Provider value={{loading, setLoading}}>
+        <AppContext.Provider value={{loading, setLoading, step, setStep}}>
             {children}
         </AppContext.Provider>
     )

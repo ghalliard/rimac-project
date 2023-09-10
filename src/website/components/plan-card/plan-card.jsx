@@ -2,9 +2,11 @@ import { Radio } from '@nextui-org/react';
 import './plan-card.scss';
 import { useContext } from 'react';
 import { PlanContext } from '../../context/PlanGlobalContext';
+import { AppContext } from '../../context/AppGlobalContext';
 
 const PlanCard = ({data}) =>{
     const {setShowPlans} = useContext(PlanContext);
+    const { step, setStep } = useContext(AppContext);
     return (    
         <Radio 
             value={data.key}
@@ -13,7 +15,12 @@ const PlanCard = ({data}) =>{
                 base: 'flex-col pt-4 pb-10 px-6',
             }}
             className='plan-card'
-            onClick={() => setShowPlans(true)}
+            onClick={() =>{
+                setShowPlans(true);
+                if(step == 50){
+                    setStep(step + 25);
+                }
+            }}
         >
             <div className='plan-card_title'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">

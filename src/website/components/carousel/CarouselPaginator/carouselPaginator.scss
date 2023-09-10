@@ -21,3 +21,8 @@
         }
     }
 }
+@media (min-width: 767px) {
+    .carousel-paginator{
+        display: none;
+    }
+}

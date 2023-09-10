@@ -7,7 +7,7 @@ import { PlanContext } from './../context/PlanGlobalContext';
 const useFetch = (url) =>{
     const navigate = useNavigate();
     const { setUser } = useContext(UserContext);
-    const { setLoading } = useContext(AppContext);
+    const { setLoading, setStep } = useContext(AppContext);
     const { setPlans } = useContext(PlanContext);
     
     const fetchData = () =>{
@@ -23,6 +23,7 @@ const useFetch = (url) =>{
         .then(data =>{
             // eslint-disable-next-line no-prototype-builtins
             if(data.hasOwnProperty('name')){
+                setStep(50);
                 setUser(data);
                 navigate('/home');
             }

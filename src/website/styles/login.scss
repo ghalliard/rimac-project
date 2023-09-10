@@ -1,23 +1,33 @@
 @import './mixins.scss';
 
+
+
 .main-login{
-    padding: 0 24px 96px 24px;
+    padding: 56px 24px 96px 24px;
+    position: relative;
+    overflow: hidden;
+    .content{
+        max-width: 425px;
+    }
+    .first-section_title{
+        @include paragraph(black, 28px, bold, normal);
+        span{
+            border-radius: 4px;
+            padding: 2px 8px;
+            background: linear-gradient(86.01deg, #00F4E2 0%, #00FF7F 100%);
+            @include paragraph(black, 12px, bold, 0.4px);
+        }
+    }
     .first-section{
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding-bottom: 24px;
         border-bottom: 1px solid $grey;
-        &_title{
-            @include paragraph(black, 28px, bold, normal);
-            span{
-                border-radius: 4px;
-                padding: 2px 8px;
-                background: linear-gradient(86.01deg, #00F4E2 0%, #00FF7F 100%);
-                @include paragraph(black, 12px, bold, 0.4px);
-            }
-        }
+        z-index: 1;
         &_image-container{
+            width: 136px;
             img{
                 border-radius: 16px;
             }
@@ -25,9 +35,93 @@
     }
     .second-section{
         margin-top: 24px;
+        &_title{
+            display: none;
+            margin-bottom: 8px;
+        }
         &_subtitle{
             @include paragraph(black, 14px, 500, 0.2px);
             margin-bottom: 24px;
+        }
+    }
+    .violet-blur{
+        position: absolute;
+        bottom: -50%;
+        left: -50%;
+        background-color: #4c2882;
+        filter: blur(80px);
+        border-radius: 50%;
+        width: 256px;
+        height: 386px;
+    }
+    .aqua-blur{
+        background-color: #00ffff;
+        top: -30%;
+        right: -50%;
+        position: absolute;
+        filter: blur(70px);
+        border-radius: 50%;
+        width: 300px;
+        height: 282px;
+    }
+}
+@media (min-width: 425px) {
+    .main-login{
+        .content{
+            margin: 0 auto;
+        }
+    }
+}
+@media (min-width: 1023px) {
+    .main-login{
+        padding-left: 60px;
+        padding-right: 60px;
+        .content{
+            gap: 60px;
+            max-width: none;
+            margin: 0;
+            display: flex;
+        }
+        .first-section{
+            border-bottom: none;
+            padding: 0;
+            &_title{
+                display: none;
+            }
+            &_image-container{
+                width: 480px;
+            }
+        }
+        .second-section{
+            max-width: 352px;
+            margin-top: 0;
+            &_title{
+                display: block;
+            }
+        }
+    }
+}
+@media (min-width: 1360px) {
+    .main-login{
+        padding-left: 120px;
+        padding-right: 120px;
+        .content{
+            margin-top: 32px;
+            gap: 120px;
+        }
+        .aqua-blur{
+            width: 432px;
+            height: 656px;
+            top: 5%;
+            right: -30%;
+            filter: blur(160px);
+        }
+        .violet-blur{
+            width: 432px;
+            height: 656px;
+            bottom: -30%;
+            left: -25%;
+            filter: blur(160px);
         }
     }
 }

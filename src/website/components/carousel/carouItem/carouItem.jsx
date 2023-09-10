@@ -1,9 +1,11 @@
 import { useContext } from 'react';
 import './carouItem.scss';
 import { PlanContext } from '../../../context/PlanGlobalContext';
+import { AppContext } from '../../../context/AppGlobalContext';
 
 const CarouItem = ({plan}) => {
     const { setSelectedPlan } = useContext(PlanContext);
+    const { step, setStep } = useContext(AppContext);
     return (
         <div className='carousel-item'>
             <div className='carousel-item_title'>
@@ -43,7 +45,9 @@ const CarouItem = ({plan}) => {
             <button 
                 className="carousel-item_button"
                 onClick={() =>{
-                    setSelectedPlan(plan)
+                    setSelectedPlan(plan);
+                    setStep(step + 25);
+                    console.log(step);
                 }}
             >Seleccionar plan</button>
         </div>

@@ -3,6 +3,7 @@ import { UserContext } from '../context/userGlobalContext';
 
 const useForm = () =>{
     const {form, setForm} = useContext(UserContext);
+
     const handleChange = (e) => {
         const {name, value} = e.target;
 

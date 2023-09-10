@@ -4,7 +4,8 @@ import {Select, SelectItem, Input, Checkbox} from "@nextui-org/react";
 import './form.scss';
 
 const Form = () => {
-    const { form, handleChange } = useForm();
+    const { form, handleChange, inputDocumentValidation } = useForm();
+    
     const { fetchData } = useFetch('https://rimac-front-end-challenge.netlify.app/api/user.json');
 
     return (
@@ -29,8 +30,11 @@ const Form = () => {
                 name='document'
                 value={form.document}
                 onChange={handleChange}
-                type="text"
+                validationState={inputDocumentValidation ? 'invalid' : undefined}
+                type="number"
                 label="Nro. de documento"
+                maxLength={8}
+                isRequired={true}
                 size={'sm'}/>
             </div>
                 
@@ -41,12 +45,19 @@ const Form = () => {
                 className='mt-4'
                 name='cellphone'
                 value={form.cellphone}
+                isRequired={true}
                 onChange={handleChange}
             />
 
             <div className="second-section_form_checkbox">
-                <Checkbox color="default">Acepto la Política de Privacidad</Checkbox>
-                <Checkbox color="default">Acepto la Política Comunicaciones Comerciales</Checkbox>
+                <Checkbox 
+                    color="default"
+                    isRequired={true}
+                >Acepto la Política de Privacidad</Checkbox>
+                <Checkbox 
+                    color="default"
+                    isRequired={true}
+                >Acepto la Política Comunicaciones Comerciales</Checkbox>
                 <a>Aplican Términos y Condiciones</a>
             </div>
 

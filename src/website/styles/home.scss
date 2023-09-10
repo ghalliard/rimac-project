@@ -1,11 +1,23 @@
 @import './mixins.scss';
 
+.stepper-indicator{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 0 24px;
+    padding-top: 56px;
+    & > p{
+        flex-shrink: 0;
+    }
+}
+
 .main-home{
     display: flex;
     overflow: hidden;
     .step{
         width: 100%;
         flex-shrink: 0;
+        transition: 0.5s;
     }
     .step-1{
         display: flex;
@@ -22,8 +34,6 @@
             @include paragraph(black, 16px, normal, 0.1px);
         }
         &_plan-card-container{
-            display: flex;
-            flex-direction: column;
             margin-top: 32px;
             & > div{
                 gap: 32px;
@@ -67,4 +77,27 @@
             }
         }
     }
+}
+@media (min-width: 767px) {
+    .main-home{
+        .step-1{
+            &_plan-card-container{
+                & > div{
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                }
+            }
+        }
+    }
+}
+@media (min-width: 1024px){
+    .main-home{
+        .step-2 .step-container{
+            text-align: start;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 928px;
+        }
+    }
+    
 }

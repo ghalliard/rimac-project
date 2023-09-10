@@ -5,5 +5,19 @@
     flex-flow: row nowrap;
     position: relative;
     width: 320px;
-    margin-top: 24px;
+}
+@media (min-width: 767px) {
+    .carousel-container{
+        padding: 0;
+        justify-content: space-evenly;
+        row-gap: 16px;
+        flex-wrap: wrap;
+        width: 100%;
+        column-gap: 0;
+    }
+}
+@media (min-width: 1023px) {
+    .carousel{
+        width: 100%;
+    }
 }
