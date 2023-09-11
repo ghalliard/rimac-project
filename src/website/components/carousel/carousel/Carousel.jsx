@@ -28,6 +28,7 @@ const Carousel = () => {
       overflowY: showPlans? 'visible' : 'hidden',
       marginTop: '24px'
      }}
+     id="carousel-scroll"
      className="carousel"
      >
         <div className="carousel-container">

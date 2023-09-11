@@ -16,6 +16,8 @@ const PlanCard = ({data}) =>{
             }}
             className='plan-card'
             onClick={() =>{
+                const carousel = document.getElementById('carousel-scroll');
+                carousel.scrollIntoView({behavior: 'smooth'});
                 setShowPlans(true);
                 if(step == 50){
                     setStep(step + 25);

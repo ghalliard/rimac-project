@@ -47,7 +47,6 @@ const CarouItem = ({plan}) => {
                 onClick={() =>{
                     setSelectedPlan(plan);
                     setStep(step + 25);
-                    console.log(step);
                 }}
             >Seleccionar plan</button>
         </div>

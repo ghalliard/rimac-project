@@ -14,9 +14,9 @@ const Login = () => {
                     </h1>
                     <div className="first-section_image-container">
                         <img 
-                            src="src/assets/image217.jpg" 
+                            src="https://firebasestorage.googleapis.com/v0/b/softtek-ffe0b.appspot.com/o/image217.jpg?alt=media&token=18a7820d-8521-43e3-904a-2e5b4e4291e9" 
                             alt="image responsive" 
-                            srcSet="src/assets/image220.jpg 1024w"
+                            srcSet="https://firebasestorage.googleapis.com/v0/b/softtek-ffe0b.appspot.com/o/image220.jpg?alt=media&token=4aa64596-b31f-4cb2-af23-60274f5d523f 1024w"
                         />
                     </div>
                 </section>

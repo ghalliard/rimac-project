@@ -13,8 +13,8 @@ import { AppContext } from '../context/AppGlobalContext';
 const Home = () =>{
     const { step, setStep } = useContext(AppContext);
     const [planFor, setPlanFor] = useState(null);
-    const { user, form, setUser } = useContext(UserContext);
-    const { plans, selectedPlan, setShowPlans, setSelectedPlan } = useContext(PlanContext);
+    const { user, form, setUser, setForm } = useContext(UserContext);
+    const { plans, selectedPlan, setShowPlans, setSelectedPlan, showPlans } = useContext(PlanContext);
     const { fetchData } = useFetch('https://rimac-front-end-challenge.netlify.app/api/plans.json');
     const navigate = useNavigate();
 
@@ -26,11 +26,21 @@ const Home = () =>{
             setPlanFor(null);
         }
         if(step === 50 || step == 75){
+            setForm({
+                documentType: 'DNI',
+                document: '',
+                cellphone: '',
+            });
             setUser(null);
             setShowPlans(false);
             navigate('/login');
         }
     }
+
+    useEffect(() =>{
+        const carousel = document.getElementById('carousel-scroll');
+        carousel.scrollIntoView({behavior: 'smooth'});
+    }, [showPlans]);
 
     useEffect(() =>{
         window.scrollTo(0, 0);
@@ -44,7 +54,6 @@ const Home = () =>{
 
     const handleTransition = () =>{
         const width = (step == 100) ? document.querySelector('.main-home').clientWidth : 0;
-        console.log(width);
         const carousel = document.getElementById('carousel-component');
 
         (step == 100) ? carousel.style.height = 0 : carousel.style.height = 'auto';
@@ -110,7 +119,7 @@ const Home = () =>{
                         {cards.map((element, index) => <PlanCard  data={{...element, key: index+1}} key={`plan-${index+1}`}/>)}
                     </RadioGroup>
 
-                    <Carousel/>
+                    <Carousel />
                 </div>
 
                 <div className='step step-2'>
