@@ -13,10 +13,20 @@ import { AppContext } from '../context/AppGlobalContext';
 const Home = () =>{
     const { step, setStep } = useContext(AppContext);
     const [planFor, setPlanFor] = useState(null);
-    const { user, form, setUser, setForm } = useContext(UserContext);
+    const { user, form } = useContext(UserContext);
     const { plans, selectedPlan, setShowPlans, setSelectedPlan, showPlans } = useContext(PlanContext);
     const { fetchData } = useFetch('https://rimac-front-end-challenge.netlify.app/api/plans.json');
     const navigate = useNavigate();
+
+    useEffect(() =>{
+        scrollTo(0, 0);
+
+        if(plans.length === 0){  
+            fetchData();
+        }
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const handleBack = () =>{
         if(step === 100){
@@ -26,31 +36,17 @@ const Home = () =>{
             setPlanFor(null);
         }
         if(step === 50 || step == 75){
-            setForm({
-                documentType: 'DNI',
-                document: '',
-                cellphone: '',
-            });
-            setUser(null);
             setShowPlans(false);
             navigate('/login');
         }
     }
 
     useEffect(() =>{
-        const carousel = document.getElementById('carousel-scroll');
-        carousel.scrollIntoView({behavior: 'smooth'});
-    }, [showPlans]);
-
-    useEffect(() =>{
-        window.scrollTo(0, 0);
-        
-        if(plans.length === 0){
-            fetchData();
+        if(showPlans){
+            const carousel = document.getElementById('carousel-scroll');
+            carousel.scrollIntoView({behavior: 'smooth'});
         }
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [showPlans]);
 
     const handleTransition = () =>{
         const width = (step == 100) ? document.querySelector('.main-home').clientWidth : 0;

@@ -5,9 +5,15 @@ const useForm = () =>{
     const {form, setForm, formError, setFormError, formValidation, setFormValidation} = useContext(UserContext);
 
     const handleChange = (e) => {
-        const {name, value} = e.target;
+        let {value} = e.target;
+        const {name} = e.target;
 
         if(name === 'document'){
+            value = value.replace(/[^0-9]/g, '');
+            setForm({
+                ...form,
+                document: value,
+            });
             if(value.length == 0){
                 setFormError({
                     ...formError,
@@ -35,6 +41,11 @@ const useForm = () =>{
             }
         }
         if(name === 'cellphone'){
+            value = value.replace(/[^0-9]/g, '');
+            setForm({
+                ...form,
+                cellphone: value,
+            });
             if(value.length === 0){
                 if(value.length == 0){
                     setFormError({
@@ -62,12 +73,13 @@ const useForm = () =>{
                 });
             }
         }
-
-        setForm({
-            ...form,
-            [name]: (name === 'documentType' && value === '') ? form.documentType : value,
-        })
-
+        if(name === 'documentType'){
+            setForm({
+                ...form,
+                document: '',
+                [name]: (name === 'documentType' && value === '') ? form.documentType : value,
+            });
+        }
     }
     return { form, handleChange, formError, formValidation }
 }

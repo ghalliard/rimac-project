@@ -2,8 +2,8 @@ import useForm from '../../hooks/useForm';
 import useFetch from '../../hooks/useFetch';
 import {Select, SelectItem, Input, Checkbox } from "@nextui-org/react";
 import './form.scss';
-import { useState } from 'react';
-//import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { UserContext } from '../../context/userGlobalContext';
 
 const Form = () => {
     const { form, handleChange, formError, formValidation } = useForm();
@@ -12,9 +12,29 @@ const Form = () => {
     const [ formTouched, setFormTouched ] = useState({
         documentTouched: false,
         cellphoneTouched: false,
-        privacyTouched: false,
-        communicationTouched: false
     });
+
+    const { user, setForm, setFormValidation, setFormError, setUser } = useContext(UserContext);
+
+    useEffect(() =>{
+        if(user){
+            setForm({
+                documentType: 'DNI',
+                document: '',
+                cellphone: '',
+            });
+            setFormValidation({
+                isDocumentValid: false,
+                isCellphoneValid: false
+            });
+            setFormError({
+                documentError: 'Este campo es requerido.',
+                cellphoneError: 'Este campo es requerido.'
+            });
+            setUser(null);
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const handleBlur = (e) =>{
         const { name } = e.target;
@@ -52,8 +72,8 @@ const Form = () => {
                     <SelectItem key={'DNI'} value={'DNI'}>
                         DNI
                     </SelectItem>
-                    <SelectItem key={'OTHERS'} value={'OTHERS'}>
-                        Other
+                    <SelectItem key={'CE'} value={'CE'}>
+                        CE
                     </SelectItem>
                 </Select>
 
@@ -62,9 +82,9 @@ const Form = () => {
                 value={form.document}
                 onChange={handleChange}
                 errorMessage={formTouched.documentTouched ? formError.documentError : ''}
-                type="number"
+                type="tel"
                 label="Nro. de documento"
-                maxLength={8}
+                maxLength={form.documentType === 'DNI' ? 8 : 9}
                 isRequired={true}
                 validationState={!formValidation.isDocumentValid && formTouched.documentTouched ? 'invalid' : undefined}
                 onBlur={handleBlur}
@@ -72,13 +92,14 @@ const Form = () => {
             </div>
                 
             <Input 
-                type="text" 
+                type="tel" 
                 label="Celular" 
                 size={'sm'} 
                 className='mt-2'
                 name='cellphone'
                 value={form.cellphone}
                 isRequired={true}
+                maxLength='9'
                 onChange={handleChange}
                 onBlur={handleBlur}
                 errorMessage={formTouched.cellphoneTouched ? formError.cellphoneError : ''}
