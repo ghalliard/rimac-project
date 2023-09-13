@@ -36,6 +36,15 @@ const Form = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    useEffect(() =>{
+        setFormTouched({
+            ...formTouched,
+            documentTouched: false
+        });
+        
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [form.documentType]);
+
     const handleBlur = (e) =>{
         const { name } = e.target;
         if(name === 'document'){
