@@ -49,7 +49,7 @@ const Home = () =>{
     }, [showPlans]);
 
     const handleTransition = () =>{
-        const width = (step == 100) ? document.querySelector('.main-home').clientWidth : 0;
+        const width = (step == 100) ? window.innerWidth : 0;
         const carousel = document.getElementById('carousel-component');
 
         (step == 100) ? carousel.style.height = 0 : carousel.style.height = 'auto';
