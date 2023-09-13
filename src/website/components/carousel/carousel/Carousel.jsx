@@ -11,14 +11,15 @@ const Carousel = () => {
   const { plans, showPlans } = useContext(PlanContext);
   const { user } = useContext(UserContext); 
 
+  const handleTransition = () =>{
+    const width = document.querySelector('.carousel-container').clientWidth;
+    
+    document.querySelectorAll('.carousel-item').forEach(element =>{
+      element.style.transform = `translateX(-${(width*page) - 16*page}px)`;
+    });
+  }
+
   useEffect(() =>{
-    const handleTransition = () =>{
-      const width = document.querySelector('.carousel-container').clientWidth;
-      
-      document.querySelectorAll('.carousel-item').forEach(element =>{
-        element.style.transform = `translateX(-${(width*page) - 16*page}px)`;
-      });
-    }
     handleTransition();
   }, [page]);
 
@@ -26,7 +27,7 @@ const Carousel = () => {
     <div style={{ 
       height: showPlans? 'auto' : 0,
       overflowY: showPlans? 'visible' : 'hidden',
-      marginTop: '24px'
+      marginTop: '24px',
      }}
      id="carousel-scroll"
      className="carousel"
