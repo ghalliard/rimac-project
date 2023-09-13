@@ -50,9 +50,10 @@ const Home = () =>{
 
     const handleTransition = () =>{
         const width = (step == 100) ? window.innerWidth : 0;
+        const height = window.innerHeight - 80;
         const carousel = document.getElementById('carousel-component');
 
-        (step == 100) ? carousel.style.height = 0 : carousel.style.height = 'auto';
+        (step == 100) ? carousel.style.height = `${height}px` : carousel.style.height = 'auto';
         
         document.querySelectorAll('.step').forEach(element => {
             element.style.transform = `translateX(-${width}px)`;
